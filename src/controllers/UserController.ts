@@ -8,6 +8,7 @@ export default class UserController{
     }
 
     // asyncronus by default false wela enne, mehema reference ekakata assign krma asynchronus true wenwa.
+    // Arrow function ekak.
     signIn = async(req: Request, res:Response):Promise<Response> => {
         // Sign In Operation
         return res;
