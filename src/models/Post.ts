@@ -34,7 +34,7 @@ const PostSchema = new Schema(
             type: Array<String>,
             required: true
         }
-    }
+    }, {timestamps: true}
 );
 
 export const Post = model<IPost>("Post", PostSchema);
