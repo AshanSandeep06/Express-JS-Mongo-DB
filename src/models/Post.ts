@@ -31,7 +31,7 @@ const PostSchema = new Schema(
         },
 
         tags: {
-            type: Array,
+            type: Array<String>,
             required: true
         }
     }
