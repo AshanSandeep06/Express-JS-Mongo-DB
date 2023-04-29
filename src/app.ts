@@ -28,7 +28,8 @@ app.use((error: Error, req:Request, res: Response) => {
     res.status(500).json({state:"Error", message: res.statusMessage});
 });
 
-db.connect(process.env.MONGO_DB_URL!)  // Typescript error eka walakwa ganna agata (!) meka danna ona
+// Typescript error eka walakwa ganna agata (!) meka danna ona
+db.connect(process.env.MONGO_DB_URL!)
 // Success method = then
 .then(() => {
     console.log("Database is Connected");
