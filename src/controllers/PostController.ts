@@ -1,6 +1,7 @@
 import { RequestHandler, Request, Response } from "express";
 
 export default class PostController {
+    // async ---> asynchronous function ekk
     getAllPosts: RequestHandler = async (req: Request, res: Response): Promise<Response> => {
         return res;
     }
