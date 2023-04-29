@@ -14,14 +14,18 @@ import express, { RequestHandler, Request, Response } from "express";
 const app = express();
 
 // Mount the routes at /resources URL Path
+// ena hama request ekkma default mapping eka set krla e requests tika index.ts ekata forward krnw.
+// index.ts eken balala adala controllers waalata requests forward krnw.
 app.use("/", routes);
 
 app.use(json());
 
 app.use(urlencoded({ extended: true }));
 
+// backend eken error ekk awoth apita awshya widihata status code eka saha message ekk ywanna puluwn.
+// me method eka use krla.
 app.use((error: Error, req:Request, res: Response) => {
-    res.status(500).json({message: res.statusMessage});
+    res.status(500).json({state:"Error", message: res.statusMessage});
 });
 
 db.connect(process.env.MONGO_DB_URL!)  // Typescript error eka walakwa ganna agata (!) meka danna ona
