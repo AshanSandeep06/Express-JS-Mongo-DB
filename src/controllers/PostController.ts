@@ -80,6 +80,23 @@ export default class PostController {
     }
 
     deletePost = async(req: Request, res: Response): Promise<Response> => {
-        
+        try{
+            //Destructuring assignment
+            const { id } = req.body;
+
+            let deletedPost = Post.findByIdAndDelete(id);
+            if(!deletedPost){
+                return res.status(500).json({message: "Something Went Wrong..!"});
+            }else{
+                return res.status(200).json({message: "Post has been Deleted..!"});
+            }
+
+        }catch(error: unknown){
+            if(error instanceof Error){
+                return res.status(500).json({message: error.message});
+            }else{
+                return res.status(500).json({message: "Unknown error Occured..!"});
+            }
+        }
     }
 }
