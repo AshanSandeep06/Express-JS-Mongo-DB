@@ -34,6 +34,11 @@ const PostSchema = new Schema(
         tags: {
             type: Array<String>,
             required: true
+        },
+
+        categoryId: {
+            type: String,
+            required:true
         }
     }, {timestamps: true}
 );
