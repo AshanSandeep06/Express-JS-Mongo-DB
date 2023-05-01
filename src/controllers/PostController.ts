@@ -76,7 +76,15 @@ export default class PostController {
     };
 
     updatePost: RequestHandler = async(req: Request, res: Response): Promise<Response> => {
-        
+        try{
+
+        }catch(error: unknown){
+            if(error instanceof Error){
+                return res.status(500).json({message: error.message});
+            }else{
+                return res.status(500).json({message: "Unknown error Occured..!"});
+            }
+        }
     }
 
     deletePost = async(req: Request, res: Response): Promise<Response> => {
@@ -84,7 +92,7 @@ export default class PostController {
             //Destructuring assignment
             const { id } = req.body;
 
-            let deletedPost = Post.findByIdAndDelete(id);
+            let deletedPost = await Post.findByIdAndDelete(id);
             if(!deletedPost){
                 return res.status(500).json({message: "Something Went Wrong..!"});
             }else{
