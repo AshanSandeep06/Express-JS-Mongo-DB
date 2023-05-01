@@ -10,7 +10,7 @@ export default class CategoryRoutes {
     }
 
     private configRoutes = (): void => {
-         this.router.post("/save", this.categoryController.createCategory);
+         this.router.post("/", this.categoryController.createCategory);
          this.router.get("/", this.categoryController.retrieveAllCategories);
          this.router.put("/:id", this.categoryController.updateCategory);
          this.router.delete("/:id", this.categoryController.deleteCtaegory);
