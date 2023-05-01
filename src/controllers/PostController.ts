@@ -7,6 +7,10 @@ import { Tag } from "../models/Tag";
 export default class PostController {
     // async ---> asynchronous function ekk
     getAllPosts: RequestHandler = async (req: Request, res: Response): Promise<Response> => {
+        return res;
+    };
+
+    createPost = async(req: Request, res: Response): Promise<Response> => {
         let session: ClientSession | null = null;
 
         try{
@@ -59,10 +63,6 @@ export default class PostController {
                 return res.status(500).json({ message: "Unknown error occured." });
               }
         }
-    };
-
-    createPost = async(req: Request, res: Response): Promise<Response> => {
-        return res;
     };
 
     updatePost: RequestHandler = async(req: Request, res: Response): Promise<Response> => {
