@@ -2,11 +2,12 @@ import { Schema, model, Document } from "mongoose";
 
 // type use kre natthe methana, Document kyna component eken extends krnna bari nisa.
 export interface IPost extends Document{
-    title: String;
-    description: String;
+    title: string;
+    description: string;
     hoursCount: Number
-    lecturerName: String;
-    tags: Array<String>;
+    lecturerName: string;
+    tags: Array<string>;
+    categoryId: string;
 };
 
 const PostSchema = new Schema(
