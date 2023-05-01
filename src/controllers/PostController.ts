@@ -77,6 +77,9 @@ export default class PostController {
 
     updatePost: RequestHandler = async(req: Request, res: Response): Promise<Response> => {
         try{
+            const { id } = req.params;
+            let updatedPost = await Post.findByIdAndUpdate(id, req.body, {new: true});
+            return res.status(200).json({ message: "Post updated.", response: updatedPost });
 
         }catch(error: unknown){
             if(error instanceof Error){
@@ -90,7 +93,7 @@ export default class PostController {
     deletePost = async(req: Request, res: Response): Promise<Response> => {
         try{
             //Destructuring assignment
-            const { id } = req.body;
+            const { id } = req.params;
 
             let deletedPost = await Post.findByIdAndDelete(id);
             if(!deletedPost){
