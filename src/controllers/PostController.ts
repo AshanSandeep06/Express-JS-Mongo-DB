@@ -7,14 +7,24 @@ import { Tag } from "../models/Tag";
 export default class PostController {
     // async ---> asynchronous function ekk
     getAllPosts: RequestHandler = async (req: Request, res: Response): Promise<Response> => {
-        return res;
+        try{
+            let allPosts = await Post.find();
+            return res.status(200).json({message: "Load All Posts", response: allPosts});
+
+        }catch(error: unknown){
+            if(error instanceof Error){
+                return res.status(500).json({message: error.message});
+            }else{
+                return res.status(500).json({message: "Unknown Error Occured..!"});
+            }
+        }
     };
 
     createPost = async(req: Request, res: Response): Promise<Response> => {
         let session: ClientSession | null = null;
 
         try{
-            const { categoryName } = req.body();
+            const { categoryName } = req.body;
 
             session = await mongoose.startSession();
             session.startTransaction();
