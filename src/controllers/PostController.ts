@@ -76,10 +76,10 @@ export default class PostController {
     };
 
     updatePost: RequestHandler = async(req: Request, res: Response): Promise<Response> => {
-        return res;
+        
     }
 
     deletePost = async(req: Request, res: Response): Promise<Response> => {
-        return res;
+        
     }
 }
