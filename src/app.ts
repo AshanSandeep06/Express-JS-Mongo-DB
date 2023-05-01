@@ -6,10 +6,26 @@ import express, { RequestHandler, Request, Response } from "express";
 import db from "mongoose";
 import routes from "./routes"
 import { json, urlencoded } from "body-parser";
+import cors from "cors";
 
 // Create the express app
 // const app = require(); // ---> JS Way
 const app = express();
+
+// Allow CORS for any Origin
+// app.use(cors());
+
+// You can define Specific Origins and Allow CORS only for these Origins.
+const allowedOrigins = ["http://localhost:3000"];
+app.use(cors({
+    origin: (origin, callback) => {
+        if(allowedOrigins.indexOf(origin!) !== -1 || !origin){
+            callback(null, true);
+        }else{
+            callback(new Error("Not Allowed by CORS"));
+        }
+    }
+}));
 
 app.use(json());
 
